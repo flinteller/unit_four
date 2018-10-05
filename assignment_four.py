@@ -7,7 +7,12 @@ import random
 
 def get_operation():
     user_operation = input("What operation would you like? (+, -, *)")
-    return user_operation
+    if user_operation == "-":
+        return user_operation
+    elif user_operation == "*":
+        return user_operation
+    else:
+        return "+"
 
 
 def get_max_number():
@@ -15,35 +20,40 @@ def get_max_number():
     return max_number
 
 
-def get_random_one():
-    max_number = get_max_number()
-    random_one = random.randint(1, max_number)
-    return random_one
+def get_random_(max_number):
+    random_ = random.randint(1, max_number)
+    return random_
 
 
-def get_random_two():
-    max_number = get_max_number()
-    random_two = random.randint(1, max_number)
-    return random_two
+def send_problem(number_one, user_operation, number_two):
+    user_answer = float(input(number_one, user_operation, number_two))
+    return user_answer
 
 
-def check_operation():
-    user_operation = get_operation()
-    if user_operation == "+" or "-" or "*":
-
+def correct_answer(number_one, user_operation, number_two):
+    if user_operation == "-":
+        return number_one - number_two
+    elif user_operation == "*":
+        return number_one * number_two
     else:
-        user_operation = "+"
+        return number_one + number_two
 
 
-
-def check_answer():
-    if
+def check_answer(user_answer, answer):
+    if user_answer == answer:
+        print("Correct, nice job!")
+    else:
+        print("Sorry, the correct answer is", answer, "Thanks for playing!")
 
 
 def main():
-    get_operation()
-    get_max_number()
-    get_random_one()
-    get_random_two()
+    user_operation = get_operation()
+    max_number = get_max_number()
+    number_one = get_random_(max_number)
+    number_two = get_random_(max_number)
+    user_answer = send_problem(number_one, user_operation, number_two)
+    answer = correct_answer(number_one, user_operation, number_two)
+    check_answer(user_answer, answer)
+
 
 main()
